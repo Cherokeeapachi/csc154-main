@@ -17,3 +17,7 @@ Using **your own branch**, add an entry beneath the example containing:
 ## Student Entries
 
 Add your entry below this line.
+
+**Name:** Cherokee Motes
+**Branch:** `m2-cherokee-motes`
+**Commit:** A Git commit is a saved record of changes made to files in a repository at a specific point in its history.
