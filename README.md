@@ -115,3 +115,23 @@ Work is considered complete when:
 - Any requested changes have been addressed.
 - The Pull Request has been merged into `main`.
 - Relevant documentation has been updated when needed.
+
+## Running the Starter Project
+
+The repository includes a minimal Java starter in the `src/` folder.
+
+To compile:
+
+```bash
+javac src/Main.java src/Task.java
+```
+
+To run:
+
+```bash
+java -cp src Main
+```
+
+The starter is intentionally minimal. MVP features should be implemented through the normal course workflow:
+
+**Issue → Branch → Pull Request → Review → Merge**
