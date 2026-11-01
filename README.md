@@ -135,3 +135,13 @@ java -cp src Main
 The starter is intentionally minimal. MVP features should be implemented through the normal course workflow:
 
 **Issue → Branch → Pull Request → Review → Merge**
+
+### Searching for Tasks
+
+Select **5. Search tasks** from the main menu to search for tasks by title.
+
+Enter a word or part of a task title. Searches are case-insensitive, and leading or trailing spaces are ignored.
+
+Matching tasks are displayed with their original task numbers and current statuses. If no tasks match, the program displays a message. Blank searches are rejected without changing any tasks.
+
+Searching does not modify tasks or change their order. Use the original task number when selecting a task to complete.
