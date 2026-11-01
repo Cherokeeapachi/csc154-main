@@ -1,24 +1,8 @@
-public class Main {
-    public static void main(String[] args) {
-        System.out.println("CSC-154 Task Tracker");
-        System.out.println("Project initialized successfully.");
-    }
-}
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-    static class Task {
-        String title;
-        boolean completed;
-
-        Task(String title) {
-            this.title = title;
-            this.completed = false;
-        }
-    }
-
     public static void main(String[] args) {
         List<Task> tasks = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
@@ -40,10 +24,26 @@ public class Main {
 
                     if (title.isEmpty()) {
                         System.out.println("Task title cannot be empty.");
-                    } else {
-                        tasks.add(new Task(title));
-                        System.out.println("Task added.");
+                        break;
                     }
+
+                    System.out.print("Enter description (optional): ");
+                    String description = scanner.nextLine().trim();
+
+                    System.out.print("Enter status (Pending/Completed): ");
+                    String status = scanner.nextLine().trim();
+
+                    if (!status.equalsIgnoreCase("Pending") &&
+                        !status.equalsIgnoreCase("Completed")) {
+                        System.out.println("Invalid status. Task not created.");
+                        break;
+                    }
+
+                    status = status.equalsIgnoreCase("Completed")
+                            ? "Completed" : "Pending";
+
+                    tasks.add(new Task(title, status, description));
+                    System.out.println("Task added successfully.");
                     break;
 
                 case "2":
@@ -52,10 +52,12 @@ public class Main {
                     } else {
                         for (int i = 0; i < tasks.size(); i++) {
                             Task task = tasks.get(i);
-                            String status = task.completed
-                                    ? "Completed" : "Pending";
                             System.out.printf("%d. %s [%s]%n",
-                                    i + 1, task.title, status);
+                                    i + 1, task.getTitle(), task.getStatus());
+
+                            if (!task.getDescription().isEmpty()) {
+                                System.out.println("   " + task.getDescription());
+                            }
                         }
                     }
                     break;
@@ -68,7 +70,7 @@ public class Main {
                         if (number < 1 || number > tasks.size()) {
                             System.out.println("Invalid task number.");
                         } else {
-                            tasks.get(number - 1).completed = true;
+                            tasks.get(number - 1).setStatus("Completed");
                             System.out.println("Task completed.");
                         }
                     } catch (NumberFormatException e) {
