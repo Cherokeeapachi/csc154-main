@@ -1,6 +1,6 @@
-# CSC-154 Software Development
+﻿# CSC-154 Software Development
 
-Official course repository for **CSC-154 Software Development — Fall 2026**.
+Official course repository for **CSC-154 Software Development â€” Fall 2026**.
 
 This repository will be used throughout the semester to practice professional software-development workflows with Git and GitHub.
 
@@ -32,7 +32,7 @@ For Module 3, complete your required change in:
 
 Since there are only 2 of us, use any turn order and follow the Pull Request workflow described in Canvas.
 
-## Module 4 — Issue-Driven Workflow
+## Module 4 â€” Issue-Driven Workflow
 
 Module 4 introduces GitHub Issues as the starting point for development work.
 
@@ -68,7 +68,7 @@ The CSC-154 Task Tracker is a simple command-line application that allows users 
 
 The team selected Java because it supports object-oriented programming and provides a straightforward way to build and organize the Task Tracker. The MVP will run entirely from the command line and store task information locally without requiring a database or internet connection.
 
-## Milestone 1 — MVP Task Tracker
+## Milestone 1 â€” MVP Task Tracker
 
 The first usable version will include:
 
@@ -81,7 +81,7 @@ The first usable version will include:
 - Tasks may also include an optional `description`.
 - Save and load tasks using local file-based storage.
 
-## Milestone 2 — Improvements
+## Milestone 2 â€” Improvements
 
 Potential improvements after the MVP is complete include:
 
@@ -134,70 +134,52 @@ java -cp src Main
 
 The starter is intentionally minimal. MVP features should be implemented through the normal course workflow:
 
-**Issue → Branch → Pull Request → Review → Merge**
+**Issue â†’ Branch â†’ Pull Request â†’ Review â†’ Merge**
 
 ## Release Candidate Status
 
-Status: NOT READY
+Status: MOSTLY READY
 
-The current Task Tracker source does not compile successfully.
-The build was tested using:
+The current Task Tracker compiles and runs successfully.
 
-    javac -d out src/*.java
-
-The compiler reported three errors in src/Main.java.
-The file contains two public Main class declarations,
-with import statements appearing after the first class.
-
-See Issue #21 for the existing compilation bug.
-
-## Intended Task Tracker Usage
-
-The Task Tracker code contains menu options for:
-
-1. Add task - Enter a nonblank task title.
-2. View tasks - Display tasks and their completion status.
-3. Complete task - Select a task by its displayed number.
-4. Exit - Close the application.
-
-These workflows are currently blocked by the compilation
-failure and have not been verified on this branch.
-
-## Release Candidate Verification
-
-Run the following commands from the repository root:
+Verified build commands:
 
     javac -d out src/*.java
     java -cp out Main
 
-Only attempt to launch the application after compilation
-succeeds.
+## Task Tracker Usage
 
-Use docs/regression-checklist.md to verify the following:
+Available menu options:
 
-- Compilation and application launch.
-- Creating and viewing tasks.
-- Completing a task and checking its status.
-- Handling invalid input without crashing.
-- Exiting the application normally.
+1. Add task - Enter a nonblank title, optional description, and Pending or Completed status.
+2. View tasks - Display task titles, status, and descriptions.
+3. Complete task - Select a task number to mark it completed.
+4. Exit - Close the application.
 
-Record actual Pass, Fail, Blocked, or Not implemented
-results in the pull request.
+## Release Candidate Verification
+
+The following checks passed on branch issue-34-release-readme:
+
+- Java compilation completed without errors.
+- Application launched and displayed the menu.
+- Viewing an empty list displayed "No tasks yet."
+- Creating a task with a description succeeded.
+- Viewing the task displayed its Pending status.
+- Completing the task changed its status to Completed.
+- Invalid menu option 9 displayed an error without crashing.
+- Exit option 4 ended the application normally.
+
+See docs/regression-checklist.md for additional tests.
 
 ## Known Limitations
 
-- The application currently fails compilation.
-- Creating, viewing, and completing tasks cannot be
-  verified until the compilation issue is resolved.
-- Editing and deleting tasks are not implemented in
-  the inspected Main.java code.
-- File-based task persistence is not implemented in
-  the inspected Main.java code.
-- Task search is not present in the inspected code.
-  Issue #25 tracks the search improvement.
+- Editing and deleting tasks are not available in the current menu.
+- Task data is stored in memory and is not saved after exiting.
+- Task title search is not available on this branch.
+  See Issue #25 for the separate search improvement.
+- Additional input edge cases and storage tests remain unverified.
 
 ## Release Notes
 
-- Added release-candidate verification instructions.
-- Documented current functionality and known limitations.
-
+- Added accurate build and usage instructions.
+- Documented verified workflows and known limitations.
