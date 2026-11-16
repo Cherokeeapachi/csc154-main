@@ -135,3 +135,69 @@ java -cp src Main
 The starter is intentionally minimal. MVP features should be implemented through the normal course workflow:
 
 **Issue → Branch → Pull Request → Review → Merge**
+
+## Release Candidate Status
+
+Status: NOT READY
+
+The current Task Tracker source does not compile successfully.
+The build was tested using:
+
+    javac -d out src/*.java
+
+The compiler reported three errors in src/Main.java.
+The file contains two public Main class declarations,
+with import statements appearing after the first class.
+
+See Issue #21 for the existing compilation bug.
+
+## Intended Task Tracker Usage
+
+The Task Tracker code contains menu options for:
+
+1. Add task - Enter a nonblank task title.
+2. View tasks - Display tasks and their completion status.
+3. Complete task - Select a task by its displayed number.
+4. Exit - Close the application.
+
+These workflows are currently blocked by the compilation
+failure and have not been verified on this branch.
+
+## Release Candidate Verification
+
+Run the following commands from the repository root:
+
+    javac -d out src/*.java
+    java -cp out Main
+
+Only attempt to launch the application after compilation
+succeeds.
+
+Use docs/regression-checklist.md to verify the following:
+
+- Compilation and application launch.
+- Creating and viewing tasks.
+- Completing a task and checking its status.
+- Handling invalid input without crashing.
+- Exiting the application normally.
+
+Record actual Pass, Fail, Blocked, or Not implemented
+results in the pull request.
+
+## Known Limitations
+
+- The application currently fails compilation.
+- Creating, viewing, and completing tasks cannot be
+  verified until the compilation issue is resolved.
+- Editing and deleting tasks are not implemented in
+  the inspected Main.java code.
+- File-based task persistence is not implemented in
+  the inspected Main.java code.
+- Task search is not present in the inspected code.
+  Issue #25 tracks the search improvement.
+
+## Release Notes
+
+- Added release-candidate verification instructions.
+- Documented current functionality and known limitations.
+
