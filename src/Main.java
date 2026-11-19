@@ -1,8 +1,10 @@
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Main {
+
     public static void main(String[] args) {
         List<Task> tasks = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
@@ -52,8 +54,11 @@ public class Main {
                     } else {
                         for (int i = 0; i < tasks.size(); i++) {
                             Task task = tasks.get(i);
+
                             System.out.printf("%d. %s [%s]%n",
-                                    i + 1, task.getTitle(), task.getStatus());
+                                    i + 1,
+                                    task.getTitle(),
+                                    task.getStatus());
 
                             if (!task.getDescription().isEmpty()) {
                                 System.out.println("   " + task.getDescription());
@@ -64,14 +69,22 @@ public class Main {
 
                 case "3":
                     System.out.print("Enter task number: ");
+
                     try {
                         int number = Integer.parseInt(scanner.nextLine());
 
                         if (number < 1 || number > tasks.size()) {
                             System.out.println("Invalid task number.");
                         } else {
-                            tasks.get(number - 1).setStatus("Completed");
-                            System.out.println("Task completed.");
+                            Task task = tasks.get(number - 1);
+
+                            // Fix for Issue #36
+                            if (task.getStatus().equalsIgnoreCase("Completed")) {
+                                System.out.println("Task is already completed.");
+                            } else {
+                                task.setStatus("Completed");
+                                System.out.println("Task completed.");
+                            }
                         }
                     } catch (NumberFormatException e) {
                         System.out.println("Please enter a valid number.");
@@ -89,3 +102,4 @@ public class Main {
         }
     }
 }
+
